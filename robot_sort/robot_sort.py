@@ -93,46 +93,41 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        """
-        """
+        
+        # use the light to keep track of wether the robot can
+        # swap items on it's current pass through the list
+        # start with the light on to ensure that the while loop runs
         self.set_light_on()
+
+        # if the light is on then we can swap the item if already holding one
         while self.light_is_on():
             self.swap_item()
+            
+            # robot can move right if possible
             while self.can_move_right():
                 self.move_right()
-                if self.compare_item() is not None and self.compare_item() == 1:
+
+                # the robot will compare the items and swap them according to the value
+                if self.compare_item() == 1:
                     self.swap_item()
+
+            # robot can move left if possible
             while self.can_move_left():
                 self.move_left()
+
+            # if the robot can move right and there are no items to compare
             while self.can_move_right() and self.compare_item() is not None:
                 self.move_right()
+
+            # if it encounters an item while moving right then swap it and conitnue to move right
             self.swap_item()
             self.move_right()
+
+            # if the robot can't move right anymore then turn the light off to indicate we are done with the current pass of the list
             if self.can_move_right() == False:
                 self.set_light_off()
-        # self.set_light_on()
-
-        # while self.light_is_on():
-        #     self.set_light_off
-
-        # while self.can_move_right:
-        #     self.swap_item()
-        #     self.move_right()
-
-        #     if self.compare_item == 1:
-        #         self.swap_item()
-        #         self.move_left()
-        #         self.swap_item()
-        #         self.move_right()
-        #         self.set_light_on()
-
-        #     else:
-        #         self.move_left()
-        #         self.swap_item()
-        #         self.move_right()
             
-        # while self.can_move_left:
-        #     self.move_left()
+      
 
         
 
