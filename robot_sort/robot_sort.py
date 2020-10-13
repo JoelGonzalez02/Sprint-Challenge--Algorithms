@@ -115,8 +115,8 @@ class SortingRobot:
             while self.can_move_left():
                 self.move_left()
 
-            # if the robot can move right and there are no items to compare
-            while self.can_move_right() and self.compare_item() is not None:
+            # if the robot can move right and there are 
+            while self.compare_item() != 0:
                 self.move_right()
 
             # if it encounters an item while moving right then swap it and conitnue to move right
